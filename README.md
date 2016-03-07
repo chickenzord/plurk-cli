@@ -19,4 +19,4 @@ Get yourself a key on http://www.plurk.com/PlurkApp/
 
 # How to use
 
-Run `./plurk-cli --help` or `./plurk-cli --help <COMMAND>` for more information.
+Run `./plurk-cli --help` or `./plurk-cli <COMMAND> --help` for more information.
