@@ -35,5 +35,28 @@ def whois(user_id, key, list_keys):
     data = user_info[key] if key else json.dumps(user_info, indent = 2)
     click.echo(data)
 
+@cli.command()
+@click.option('--display-name', '-d', default = None)
+@click.option('--full-name', '-f', default = None)
+@click.pass_context
+def update(ctx, display_name = None, full_name = None):
+  data = dict()
+  if display_name:
+    data['display_name'] = display_name
+  if full_name:
+    data['full_name'] = full_name
+
+  try:
+    response = plurk.callAPI('/APP/Users/update', data)
+    result = {
+      'display_name': response['user']['display_name'],
+      'full_name': response['user']['full_name']
+    }
+    output = response['error_text'] if 'error_text' in response else json.dumps(result, indent = 2)
+  except Exception as e:
+    output = str(e)
+
+  click.echo(output)
+
 if __name__ == '__main__':
   cli()
