@@ -20,7 +20,11 @@ def whois(user_id = None):
     return _call('/APP/Profile/getOwnProfile', 'user_info')
 
 def update_profile(display_name = None, full_name = None):
-  json = _call('/APP/Users/update', 'user', {'display_name': display_name, 'full_name': full_name})
+  params = dict()
+  if display_name: params['display_name'] = display_name
+  if full_name: params['full_name'] = full_name
+
+  json = _call('/APP/Users/update', 'user', params)
   return {
     'display_name': json['display_name'],
     'full_name': json['full_name']
