@@ -19,14 +19,14 @@ Get yourself a key on http://www.plurk.com/PlurkApp/
 
 # How to use
 
-Run `./plurk-cli --help` or `./plurk-cli <COMMAND> --help` for more information.
+Run `plurk-cli --help` or `plurk-cli <COMMAND> --help` for more information.
 
 Some sample commands:
 
 ```
 plurk-cli whoami
 plurk-cli whois akhy
-plurk-cli update --display-name "Chick~en~Ciel"
+plurk-cli update-profile --display-name "Chick~en~Ciel"
 plurk-cli post "Hello World!"
 ```
 

@@ -4,8 +4,8 @@ plurk = plurkenv.init()
 
 def _call(path, key = None,  params = {}):
   response = plurk.callAPI(path, params)
-  if 'error_text' in response:
-    raise Exception(response['error_text'])
+  if response is None:
+    raise Exception("Request failed")
   elif key is None:
     return response
   elif key in response:

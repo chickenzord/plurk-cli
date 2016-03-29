@@ -49,11 +49,14 @@ def whois(ctx, user_id, key, list_keys):
 @click.option('--full-name', '-f', default = None)
 @click.pass_context
 def update_profile(ctx, display_name, full_name):
-  if display_name is None and full_name is None:
-    _out(ctx, Exception('You must specify either --display-name or --full-name'))
-  else:
-    user = plurkapi.update_profile(display_name, full_name)
-    _out(ctx, user)
+  try:
+    if display_name is None and full_name is None:
+      _out(ctx, Exception('You must specify either --display-name or --full-name'))
+    else:
+      user = plurkapi.update_profile(display_name, full_name)
+      _out(ctx, user)
+  except Exception as e:
+    _out(ctx, e)
 
 if __name__ == '__main__':
   cli()
